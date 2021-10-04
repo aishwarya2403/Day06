@@ -1,25 +1,15 @@
 import java.lang.Math;
 public class CouponNumbers {
-    public static int getCoupon(int n) {
-        return (int) (Math.random() * n);
-    }
-    public static int collect(int n) {
-        boolean[] isCollected = new boolean[n];
-        int count = 0;
-        int distinct  = 0;
-        while (distinct < n) {
-            int value = getCoupon(n);
-            count++;
-            if (!isCollected[value]) {
-                distinct++;
-                isCollected[value] = true;
-            }
+    public static void main(String[] args){
+        char[] chars="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789".toCharArray();
+        int max=100000000;
+        int random=(int) (Math.random() *max);
+        StringBuffer sb=new StringBuffer();
+        while(random>0){
+            sb.append(chars[random%chars.length]);
+            random/=chars.length;
         }
-        return count;
-    }
-    public static void main(String[] args) {
-        int n = Integer.parseInt(args[0]);
-        int count = collect(n);
-        System.out.println(count);
+        String couponCode= sb.toString();
+        System.out.println("coupon code:"+couponCode);
     }
 }
